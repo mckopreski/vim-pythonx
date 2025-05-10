@@ -15,7 +15,7 @@ class IdentifierCompleter(object):
 
     @staticmethod
     def _default_identifier_matcher(line_number, line):
-        matches = re.search("([\w.]+)(?![\w.]*\()$", line)
+        matches = re.search("([\\w.]+)(?![\\w.]*\\()$", line)
         if not matches:
             return None
 
@@ -25,7 +25,7 @@ class IdentifierCompleter(object):
         )
 
     def __init__(self,
-            identifiers_re=r"([\w.]+)(?=[\w., ]*:?=)|(\w+)(?=\s+\S+[,)])"):
+            identifiers_re=r"([\\w.]+)(?=[\\w., ]*:?=)|(\\w+)(?=\\s+\\S+[,)])"):
         self._identifiers_re = identifiers_re
 
         self._skipper = IdentifierCompleter._default_skipper
